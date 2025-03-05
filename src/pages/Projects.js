@@ -29,7 +29,7 @@ const projects = [
 
 const Projects = () => {
     return (
-        <div id="projects" className="py-16 bg-gray-100">
+        <div id="projects" className="py-16 bg-gray-400">
             <div className="container mx-auto px-6">
                 <h1 className="text-3xl font-bold text-center mb-8">My Projects</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

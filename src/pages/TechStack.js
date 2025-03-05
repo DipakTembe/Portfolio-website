@@ -41,7 +41,7 @@ const TechStack = () => {
           </span>
         </h1>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
           {techs.map((tech, index) => (
             <div
               key={index}

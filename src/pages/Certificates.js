@@ -281,7 +281,7 @@ const Certificates = () => {
                 alt={`Certificate ${cert.id}`}
                 className="w-full rounded-md"
               />
-              <div className="mt-3 text-gray-700 text-left">
+              <div className="mt-3 text-gray-800 text-left">
                 <p className="text-sm">
                   <span className="font-semibold">Date:</span> {cert.date}
                 </p>
