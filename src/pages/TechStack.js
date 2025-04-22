@@ -23,6 +23,14 @@ const TechStack = () => {
     { name: "MariaDB", icon: <SiMariadb />, color: "text-yellow-700", bg: "from-yellow-500 to-yellow-700" },
     { name: "PostgreSQL", icon: <DiPostgresql />, color: "text-blue-500", bg: "from-blue-500 to-blue-700" },
 
+    {
+      name: "Power BI",
+      icon: <img src="/images/power-bi.png" alt="Power BI" className="w-14 h-14" />,
+      color: "text-yellow-500",
+      bg: "from-yellow-400 to-yellow-600"
+    },
+    
+
     // DevOps & Cloud
     { name: "AWS", icon: <FaAws />, color: "text-yellow-500", bg: "from-yellow-500 to-yellow-700" },
 
