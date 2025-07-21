@@ -19,8 +19,8 @@ const projects = [
     },
     {
         id: 3,
-        img: "images/weather forecast.png",
-        title: "Weather Forecast",
+        img: "images/to-do list.jpg",
+        title: "To-Do List App",
         description:
             "The prediction of future weather conditions based on global and regional scale numerical models and data assimilation.",
         link: "https://dipaktembetodolistapp.netlify.app/",
