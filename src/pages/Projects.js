@@ -7,7 +7,7 @@ const projects = [
         title: "Crypto Dashboard",
         description:
             "Automatically track changes in movement & earnings potential across multiple coins, time ranges, trading intervals, and more.",
-        link: "#",
+        link: "https://dipakcryptodashboard.netlify.app/",
     },
     {
         id: 2,
