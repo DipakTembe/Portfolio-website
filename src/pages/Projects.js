@@ -15,7 +15,7 @@ const projects = [
         title: "E-commerce Website",
         description:
             "An e-commerce website is an online store where customers can buy and sell products and services.",
-        link: "#",
+        link: "https://dipakecommercewebsite.netlify.app",
     },
     {
         id: 3,
