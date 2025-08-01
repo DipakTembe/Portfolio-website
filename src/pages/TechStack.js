@@ -29,7 +29,6 @@ const TechStack = () => {
       color: "text-yellow-500",
       bg: "from-yellow-400 to-yellow-600"
     },
-    
 
     // DevOps & Cloud
     { name: "AWS", icon: <FaAws />, color: "text-yellow-500", bg: "from-yellow-500 to-yellow-700" },
@@ -49,7 +48,8 @@ const TechStack = () => {
           </span>
         </h1>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+        {/* Updated Grid for 3 logos on mobile */}
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-6">
           {techs.map((tech, index) => (
             <div
               key={index}
