@@ -1,22 +1,23 @@
 import React from "react";
 
 const projects = [
-    {
+     {
         id: 1,
-        img: "images/crypto dashboard.jpg",
-        title: "Crypto Dashboard",
-        description:
-            "Automatically track changes in movement & earnings potential across multiple coins, time ranges, trading intervals, and more.",
-        link: "https://dipakcryptodashboard.netlify.app/",
-    },
-    {
-        id: 2,
         img: "images/E-commerce.jpg",
         title: "E-commerce Website",
         description:
             "An e-commerce website is an online store where customers can buy and sell products and services.",
         link: "https://dipakecommercewebsite.netlify.app",
     },
+    {
+        id: 2,
+        img: "images/crypto dashboard.jpg",
+        title: "Crypto Dashboard",
+        description:
+            "Automatically track changes in movement & earnings potential across multiple coins, time ranges, trading intervals, and more.",
+        link: "https://dipakcryptodashboard.netlify.app/",
+    },
+   
     {
         id: 3,
         img: "images/to-do list.jpg",
@@ -58,12 +59,7 @@ const Projects = () => {
                         </div>
                     ))}
                 </div>
-                <div className="text-center mt-8">
-                    <a href="/more-projects" className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">
-                        See More
-                    </a>
-
-                </div>
+                
             </div>
         </div>
     );
