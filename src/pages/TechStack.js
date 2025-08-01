@@ -25,7 +25,7 @@ const TechStack = () => {
 
     {
       name: "Power BI",
-      icon: <img src="/images/power-bi.png" alt="Power BI" className="w-14 h-14" />,
+      icon: <img src="/images/power-bi.png" alt="Power BI" className="w-12 h-12 sm:w-14 sm:h-14" />,
       color: "text-yellow-500",
       bg: "from-yellow-400 to-yellow-600"
     },
@@ -48,7 +48,6 @@ const TechStack = () => {
           </span>
         </h1>
 
-        {/* Updated Grid for 3 logos on mobile */}
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-6">
           {techs.map((tech, index) => (
             <div
@@ -57,7 +56,9 @@ const TechStack = () => {
                 shadow-lg backdrop-blur-md border border-gray-800 hover:scale-105 transform transition-all duration-300 
                 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.3)]`}
             >
-              <div className={`text-6xl mb-4 ${tech.color} drop-shadow-md brightness-125`}>{tech.icon}</div>
+              <div className={`text-5xl sm:text-6xl mb-4 ${tech.color} drop-shadow-md brightness-125`}>
+                {tech.icon}
+              </div>
               <p className="text-lg font-semibold">{tech.name}</p>
             </div>
           ))}
