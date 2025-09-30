@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaReact,
   FaHtml5,
@@ -7,6 +7,9 @@ import {
   FaGithub,
   FaGitAlt,
   FaJs,
+  FaPython,
+  FaPhp,
+  FaLaravel,
 } from "react-icons/fa";
 import {
   DiMongodb,
@@ -24,61 +27,112 @@ import {
 } from "react-icons/si";
 
 const TechStack = () => {
-  const techs = [
-    { name: "HTML", icon: <FaHtml5 />, color: "text-orange-500", bg: "from-orange-500 to-orange-700" },
-    { name: "CSS", icon: <FaCss3Alt />, color: "text-blue-500", bg: "from-blue-500 to-blue-700" },
-    { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "text-teal-500", bg: "from-teal-500 to-teal-700" },
-    { name: "JavaScript", icon: <FaJs />, color: "text-yellow-500", bg: "from-yellow-500 to-yellow-700" },
-    { name: "React.js", icon: <FaReact />, color: "text-blue-500", bg: "from-blue-500 to-blue-700" },
-    { name: "Next.js", icon: <SiNextdotjs />, color: "text-gray-900", bg: "from-gray-600 to-gray-900" },
-    { name: "Redux", icon: <SiRedux />, color: "text-purple-400", bg: "from-purple-500 to-purple-700" },
-    { name: "Node.js", icon: <DiNodejs />, color: "text-green-400", bg: "from-green-500 to-green-700" },
-    { name: "Express.js", icon: <SiExpress />, color: "text-black", bg: "from-gray-500 to-gray-700" },
-    { name: "MongoDB", icon: <DiMongodb />, color: "text-green-500", bg: "from-green-500 to-green-700" },
-    { name: "MySQL", icon: <DiMysql />, color: "text-cyan-400", bg: "from-cyan-500 to-cyan-700" },
-    { name: "MariaDB", icon: <SiMariadb />, color: "text-yellow-700", bg: "from-yellow-500 to-yellow-700" },
-    { name: "PostgreSQL", icon: <DiPostgresql />, color: "text-blue-500", bg: "from-blue-500 to-blue-700" },
-    {
-      name: "Power BI",
-      icon: (
-        <img
-          src="/images/power-bi.png"
-          alt="Power BI"
-          className="w-10 h-10 sm:w-14 sm:h-14"
-        />
-      ),
-      color: "text-yellow-500",
-      bg: "from-yellow-400 to-yellow-600",
-    },
-    { name: "AWS", icon: <FaAws />, color: "text-yellow-500", bg: "from-yellow-500 to-yellow-700" },
-    { name: "Git", icon: <FaGitAlt />, color: "text-red-500", bg: "from-red-500 to-red-700" },
-    { name: "GitHub", icon: <FaGithub />, color: "text-black", bg: "from-gray-500 to-gray-700" },
-    { name: "Netlify", icon: <SiNetlify />, color: "text-blue-500", bg: "from-blue-500 to-blue-700" },
-  ];
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const categories = {
+    Frontend: [
+      { name: "HTML", icon: <FaHtml5 />, color: "text-orange-500" },
+      { name: "CSS", icon: <FaCss3Alt />, color: "text-blue-500" },
+      { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "text-teal-400" },
+      { name: "JavaScript", icon: <FaJs />, color: "text-yellow-400" },
+      { name: "React.js", icon: <FaReact />, color: "text-cyan-400" },
+      { name: "Next.js", icon: <SiNextdotjs />, color: "text-white" },
+      { name: "Redux", icon: <SiRedux />, color: "text-purple-400" },
+    ],
+    Backend: [
+      { name: "Node.js", icon: <DiNodejs />, color: "text-green-400" },
+      { name: "Express.js", icon: <SiExpress />, color: "text-gray-300" },
+      { name: "Python", icon: <FaPython />, color: "text-blue-400" },
+      { name: "PHP", icon: <FaPhp />, color: "text-indigo-400" },
+      { name: "Laravel", icon: <FaLaravel />, color: "text-red-500" },
+    ],
+    Database: [
+      { name: "MongoDB", icon: <DiMongodb />, color: "text-green-500" },
+      { name: "MySQL", icon: <DiMysql />, color: "text-cyan-400" },
+      { name: "MariaDB", icon: <SiMariadb />, color: "text-blue-400" },
+      { name: "PostgreSQL", icon: <DiPostgresql />, color: "text-blue-500" },
+    ],
+    "DevOps & Tools": [
+      { name: "AWS", icon: <FaAws />, color: "text-orange-400" },
+      { name: "Git", icon: <FaGitAlt />, color: "text-red-500" },
+      { name: "GitHub", icon: <FaGithub />, color: "text-gray-300" },
+      { name: "Netlify", icon: <SiNetlify />, color: "text-teal-400" },
+    ],
+  };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-900 text-white py-16 px-6">
-      <div className="w-full max-w-6xl">
-        <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 tracking-wide">
-          <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-            🚀 My Tech Stack
-          </span>
-        </h1>
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-7xl">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <span className="text-sm font-semibold tracking-widest text-blue-400 uppercase">
+              Technical Expertise
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-300 text-transparent bg-clip-text">
+            Technology Stack
+          </h1>
+          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+            A comprehensive collection of modern tools and technologies I leverage to build scalable solutions
+          </p>
+        </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-6">
-          {techs.map((tech, index) => (
-            <div
-              key={index}
-              className={`flex flex-col items-center justify-center p-4 sm:p-6 rounded-xl bg-gradient-to-r ${tech.bg} 
-                shadow-lg backdrop-blur-md border border-gray-800 hover:scale-105 transform transition-all duration-300 
-                hover:shadow-[0px_0px_20px_rgba(255,255,255,0.3)]`}
-            >
-              <div className={`text-4xl sm:text-6xl mb-3 sm:mb-4 ${tech.color} drop-shadow-md brightness-125`}>
-                {tech.icon}
+        {/* Categories */}
+        <div className="space-y-12">
+          {Object.entries(categories).map(([category, techs], categoryIndex) => (
+            <div key={categoryIndex}>
+              <h2 className="text-xl font-semibold text-slate-300 mb-6 flex items-center">
+                <span className="w-8 h-0.5 bg-gradient-to-r from-blue-500 to-transparent mr-3"></span>
+                {category}
+              </h2>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                {techs.map((tech, index) => {
+                  const globalIndex = categoryIndex * 100 + index;
+                  return (
+                    <div
+                      key={index}
+                      onMouseEnter={() => setHoveredIndex(globalIndex)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      className="group relative"
+                    >
+                      <div className={`
+                        relative flex flex-col items-center justify-center p-4 h-28
+                        bg-slate-900/50 backdrop-blur-sm rounded-xl
+                        border border-slate-800
+                        transition-all duration-300 cursor-pointer
+                        ${hoveredIndex === globalIndex 
+                          ? 'border-slate-600 bg-slate-800/60 shadow-lg shadow-slate-900/50' 
+                          : 'hover:border-slate-700'}
+                      `}>
+                        {/* Icon */}
+                        <div className={`text-3xl mb-2 ${tech.color} transition-all duration-300
+                          ${hoveredIndex === globalIndex ? 'scale-110' : 'group-hover:scale-105'}`}>
+                          {tech.icon}
+                        </div>
+                        
+                        {/* Name */}
+                        <p className="text-xs font-medium text-center text-slate-400 group-hover:text-slate-200 transition-colors">
+                          {tech.name}
+                        </p>
+
+                        {/* Hover accent line */}
+                        <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${tech.color.replace('text-', 'from-')} to-transparent transition-opacity duration-300 ${hoveredIndex === globalIndex ? 'opacity-100' : 'opacity-0'}`}></div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              <p className="text-sm sm:text-lg font-semibold">{tech.name}</p>
             </div>
           ))}
+        </div>
+
+        {/* Bottom accent */}
+        <div className="mt-20 pt-12 border-t border-slate-800 text-center">
+          <p className="text-slate-500 text-sm">
+            Continuously learning and expanding my toolkit with emerging technologies
+          </p>
         </div>
       </div>
     </section>

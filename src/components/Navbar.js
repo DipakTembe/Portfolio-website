@@ -5,6 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -16,6 +17,8 @@ const Navbar = () => {
     const sections = ["home", "techstack", "projects", "contact"];
 
     const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
       let currentSection = "home";
 
       sections.forEach((section) => {
@@ -36,7 +39,7 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (id) => {
-    setIsOpen(false); // Close menu on click
+    setIsOpen(false);
 
     if (location.pathname !== "/") {
       navigate("/");
@@ -66,50 +69,109 @@ const Navbar = () => {
     }
   };
 
-  return (
-    <header className="fixed top-0 w-full z-50 bg-gray-900 shadow-md transition-all duration-300">
-      <div className="container mx-auto flex justify-between items-center px-6 py-4">
-        <h1 className="text-2xl font-bold text-white cursor-pointer" onClick={() => scrollToSection("home")}>
-          Dipak 🚀
-        </h1>
+  const navItems = [
+    { name: "Home", id: "home" },
+    { name: "Tech Stack", id: "techstack" },
+    { name: "Projects", id: "projects" },
+    { name: "Contact", id: "contact" },
+  ];
 
-        <nav>
-          <div className="md:hidden" onClick={toggleMenu}>
-            {isOpen ? <FaTimes size={24} className="text-white" /> : <FaBars size={24} className="text-white" />}
+  return (
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? "bg-gray-900/95 backdrop-blur-md border-b border-gray-800" 
+          : "bg-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-6">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo */}
+          <div 
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => scrollToSection("home")}
+          >
+            <h1 className="text-2xl font-bold text-white tracking-tight">
+              Dipak Tembe
+            </h1>
           </div>
 
-          <ul
-            className={`md:flex md:space-x-6 absolute md:relative top-full left-0 w-full md:w-auto bg-gray-900 md:bg-transparent flex-col md:flex-row items-center transition-all duration-500 ease-in-out ${
-              isOpen ? "flex" : "hidden"
-            }`}
-          >
-            {[
-              { name: "Home", id: "home" },
-              { name: "Tech Stack", id: "techstack" },
-              { name: "Projects", id: "projects" },
-              { name: "Contact", id: "contact" },
-            ].map((item, index) => (
-              <li key={index} className="group">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:block">
+            <ul className="flex items-center gap-1">
+              {navItems.map((item, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className={`px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                      activeSection === item.id
+                        ? "text-white"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {item.name}
+                    {activeSection === item.id && (
+                      <div className="h-0.5 bg-white mt-1 rounded-full"></div>
+                    )}
+                  </button>
+                </li>
+              ))}
+              
+              {/* Certificates Button */}
+              <li className="ml-4">
                 <button
-                  className={`block py-2 px-6 text-white transition duration-300 ${
-                    activeSection === item.id ? "text-red-400 font-bold" : "hover:text-red-400"
-                  }`}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={navigateToCertificates}
+                  className="px-6 py-2 bg-white text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200"
                 >
-                  {item.name}
+                  Certificates
                 </button>
               </li>
-            ))}
-            <li className="group">
-              <button
-                className="block py-2 px-6 text-white transition duration-300 hover:text-red-400"
-                onClick={navigateToCertificates}
-              >
-                Certificates
-              </button>
-            </li>
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden w-10 h-10 flex items-center justify-center text-white hover:text-gray-300 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden pb-6">
+            <nav className="bg-gray-800/50 backdrop-blur-md rounded-lg border border-gray-700/50 p-4 mt-2">
+              <ul className="space-y-1">
+                {navItems.map((item, index) => (
+                  <li key={index}>
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                        activeSection === item.id
+                          ? "bg-gray-700 text-white"
+                          : "text-gray-300 hover:bg-gray-700/50 hover:text-white"
+                      }`}
+                    >
+                      {item.name}
+                    </button>
+                  </li>
+                ))}
+                
+                {/* Mobile Certificates Button */}
+                <li className="pt-2">
+                  <button
+                    onClick={navigateToCertificates}
+                    className="w-full px-4 py-3 bg-white text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                  >
+                    Certificates
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
