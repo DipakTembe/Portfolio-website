@@ -155,7 +155,7 @@ const Home = () => {
                 {/* CTA Buttons - refined design */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                   <motion.a
-                    href="/Dipak Resume.pdf"
+                    href="\Dipak Tembe.pdf" 
                     download="Dipak_Tembe_Resume.pdf"
                     className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl transition-all duration-300 hover:bg-gray-100 shadow-lg hover:shadow-xl hover:scale-105"
                     whileHover={{ y: -2 }}
