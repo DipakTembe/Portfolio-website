@@ -43,7 +43,7 @@ const Contact = () => {
 
   const socialLinks = [
     { 
-      href: "https://www.linkedin.com/in/dipaktembe", 
+      href: "https://www.linkedin.com/in/dipak-tembe-2303b528a/", 
       icon: <Linkedin className="w-5 h-5" />, 
       label: "LinkedIn",
       color: "hover:text-blue-400"
