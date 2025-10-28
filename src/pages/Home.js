@@ -27,6 +27,24 @@ const Home = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const socialLinks = [
+    { 
+      icon: FaGithub, 
+      href: "https://github.com/DipakTembe", 
+      label: "GitHub" 
+    },
+    { 
+      icon: FaLinkedin, 
+      href: "https://www.linkedin.com/in/dipak-tembe-2303b528a/", 
+      label: "LinkedIn" 
+    },
+    { 
+      icon: FaTwitter, 
+      href: "#", 
+      label: "Twitter" 
+    },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
@@ -89,7 +107,7 @@ const Home = () => {
                       <div className="relative w-full h-full rounded-xl overflow-hidden">
                         <img
                           src="/images/dipak-portfolio.jpeg"
-                          alt="Dipak Tembe"
+                          alt="Dipak Tembe - Full Stack Developer"
                           className="w-full h-full object-cover"
                         />
                         
@@ -175,18 +193,17 @@ const Home = () => {
                   </motion.button>
                 </div>
 
-                {/* Social Links - minimal and elegant */}
+                {/* Social Links - updated with proper URLs */}
                 <div className="flex gap-4 justify-center lg:justify-start pt-2">
-                  {[
-                    { icon: FaGithub, href: "#", label: "GitHub" },
-                    { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-                    { icon: FaTwitter, href: "#", label: "Twitter" },
-                  ].map((social, index) => (
+                  {socialLinks
+                    .filter(social => social.href !== "#") // Hide empty links
+                    .map((social, index) => (
                     <motion.a
                       key={index}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Visit my ${social.label} profile`}
                       className="w-11 h-11 flex items-center justify-center border border-white/20 rounded-xl backdrop-blur-sm hover:border-white/40 hover:bg-white/5 transition-all duration-300 group"
                       whileHover={{ y: -3 }}
                       initial={{ opacity: 0, y: 20 }}
